@@ -24,7 +24,7 @@ const demos = [
 function Index() {
   return (
     <main>
-      <CinematicHero
+      <div className="overflow-x-hidden w-[100%] min-h-screen"><CinematicHero
         brandName="TRUEBID"
         tagline1="Buy smarter."
         tagline2="Think longer. Waste less."
@@ -34,7 +34,7 @@ function Index() {
         metricLabel="Year view"
         ctaHeading="See it in action."
         ctaDescription="Two live demonstrations show why the lowest price is not always the best decision."
-      />
+      /></div>
       <section id="demos" className="mx-auto max-w-6xl px-5 py-24">
         <div className="grid gap-10 md:grid-cols-2 md:items-end">
           <div>
