@@ -55,7 +55,7 @@ function Lighting() {
           ]}
         />
         <p className="-mt-8 text-sm text-muted-foreground">
-          Over {YEARS} years each light runs {rows[0].c.operatingHours.toLocaleString()} hours — within every supplier's rated lifespan, so no replacements are needed.
+          Over {YEARS} years each light runs {rows[0]!.c.operatingHours.toLocaleString()} hours — within every supplier's rated lifespan, so no replacements are needed.
         </p>
         <Recommendation
           name={best.s.name}

@@ -36,7 +36,7 @@ export function CostChart({ data, title }: { data: { name: string; initial: numb
             <CartesianGrid vertical={false} stroke="var(--border)" />
             <XAxis dataKey="name" tickLine={false} axisLine={false} tick={{ fill: "var(--muted-foreground)", fontSize: 13 }} />
             <YAxis tickLine={false} axisLine={false} width={70} tick={{ fill: "var(--muted-foreground)", fontSize: 12 }} tickFormatter={(v) => `${Math.round(v / 1000)}k`} />
-            <Tooltip formatter={(v: number) => pkr(v)} cursor={{ fill: "var(--muted)" }} contentStyle={{ borderRadius: 12, border: "1px solid var(--border)" }} />
+            <Tooltip formatter={(v) => pkr(Number(v))} cursor={{ fill: "var(--muted)" }} contentStyle={{ borderRadius: 12, border: "1px solid var(--border)" }} />
             <Legend iconType="circle" />
             <Bar dataKey="initial" name="Initial purchase price" fill="var(--chart-1)" radius={[8, 8, 0, 0]} />
             <Bar dataKey="total" name="Total ownership cost" fill="var(--chart-2)" radius={[8, 8, 0, 0]} />
