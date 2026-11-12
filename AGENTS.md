@@ -29,4 +29,4 @@ use the editor.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
 - All TRUEBID demo figures and cost formulas live in src/lib/truebid.ts (tested in truebid.test.ts); pages only render derived values so numbers stay consistent.
-- src/components/ui/cinematic-hero.tsx is the user's supplied hero; configure it via props only, never edit its markup/styles.
+- src/components/ui/cinematic-hero.tsx is the user's supplied hero; keep its animation/layout; phone mockup content is TRUEBID-specific and onComplete fires when the pinned scroll ends.

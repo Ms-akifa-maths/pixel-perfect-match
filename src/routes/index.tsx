@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { ArrowRight, Armchair, Lightbulb } from "lucide-react";
 import { CinematicHero } from "@/components/ui/cinematic-hero";
 
@@ -22,6 +22,7 @@ const demos = [
 ] as const;
 
 function Index() {
+  const navigate = useNavigate();
   return (
     <main>
       <div className="overflow-x-hidden w-[100%] min-h-screen"><CinematicHero
@@ -30,10 +31,16 @@ function Index() {
         tagline2="Think longer. Waste less."
         cardHeading="Lifetime cost, revealed."
         cardDescription={<><span className="text-white font-semibold">TRUEBID</span> compares the total cost of ownership — purchase, maintenance, energy and replacement — not just the cheapest quotation.</>}
-        metricValue={5}
-        metricLabel="Year view"
+        metricValue={429}
+        metricLabel="K PKR saved"
         ctaHeading="See it in action."
         ctaDescription="Two live demonstrations show why the lowest price is not always the best decision."
+        onComplete={() => navigate({ to: "/chairs" })}
+        ctaAction={
+          <Link to="/chairs" className="inline-flex items-center gap-3 rounded-full bg-primary px-8 py-4 text-sm font-extrabold uppercase tracking-widest text-primary-foreground shadow-lift">
+            Explore demonstration <ArrowRight className="h-4 w-4" />
+          </Link>
+        }
       /></div>
       <section id="demos" className="mx-auto max-w-6xl px-5 py-24">
         <div className="grid gap-10 md:grid-cols-2 md:items-end">
