@@ -28,3 +28,5 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+- All TRUEBID demo figures and cost formulas live in src/lib/truebid.ts (tested in truebid.test.ts); pages only render derived values so numbers stay consistent.
+- src/components/ui/cinematic-hero.tsx is the user's supplied hero; configure it via props only, never edit its markup/styles.
