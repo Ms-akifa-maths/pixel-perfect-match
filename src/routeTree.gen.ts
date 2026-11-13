@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ChairsRouteImport } from './routes/chairs'
+import { Route as CoolingRouteImport } from './routes/cooling'
 import { Route as LightingRouteImport } from './routes/lighting'
 
 const IndexRoute = IndexRouteImport.update({
@@ -29,6 +30,11 @@ const ChairsRoute = ChairsRouteImport.update({
   path: '/chairs',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CoolingRoute = CoolingRouteImport.update({
+  id: '/cooling',
+  path: '/cooling',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LightingRoute = LightingRouteImport.update({
   id: '/lighting',
   path: '/lighting',
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/chairs': typeof ChairsRoute
+  '/cooling': typeof CoolingRoute
   '/lighting': typeof LightingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/chairs': typeof ChairsRoute
+  '/cooling': typeof CoolingRoute
   '/lighting': typeof LightingRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,22 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/chairs': typeof ChairsRoute
+  '/cooling': typeof CoolingRoute
   '/lighting': typeof LightingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/chairs' | '/lighting'
+  fullPaths: '/' | '/about' | '/chairs' | '/cooling' | '/lighting'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/chairs' | '/lighting'
-  id: '__root__' | '/' | '/about' | '/chairs' | '/lighting'
+  to: '/' | '/about' | '/chairs' | '/cooling' | '/lighting'
+  id: '__root__' | '/' | '/about' | '/chairs' | '/cooling' | '/lighting'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ChairsRoute: typeof ChairsRoute
+  CoolingRoute: typeof CoolingRoute
   LightingRoute: typeof LightingRoute
 }
 
@@ -92,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ChairsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cooling': {
+      id: '/cooling'
+      path: '/cooling'
+      fullPath: '/cooling'
+      preLoaderRoute: typeof CoolingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lighting': {
       id: '/lighting'
       path: '/lighting'
@@ -106,6 +123,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ChairsRoute: ChairsRoute,
+  CoolingRoute: CoolingRoute,
   LightingRoute: LightingRoute,
 }
 export const routeTree = rootRouteImport
