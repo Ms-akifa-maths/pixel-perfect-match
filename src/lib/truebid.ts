@@ -48,3 +48,26 @@ export function ledCosts(s: LedSupplier) {
 }
 
 export const pkr = (n: number) => "Rs. " + Math.round(n).toLocaleString("en-PK");
+
+export interface AcSupplier {
+  name: string; tag: string; unitPrice: number; kw: number; lifespan: number;
+  warranty: number; maintenance: number; delivery: number; recycled: number;
+}
+export const AC = { qty: 20, hoursPerDay: 6, daysPerYear: 200, tariff: 60 };
+export const acSuppliers: AcSupplier[] = [
+  { name: "CoolBasic", tag: "Supplier Alpha", unitPrice: 85000, kw: 1.8, lifespan: 4, warranty: 1, maintenance: 40000, delivery: 20000, recycled: 10 },
+  { name: "InverterPro", tag: "Supplier Beta", unitPrice: 120000, kw: 1.2, lifespan: 10, warranty: 5, maintenance: 20000, delivery: 20000, recycled: 35 },
+  { name: "EcoChill", tag: "Supplier Gamma", unitPrice: 140000, kw: 0.9, lifespan: 12, warranty: 7, maintenance: 15000, delivery: 20000, recycled: 50 },
+];
+
+export function acCosts(s: AcSupplier) {
+  const purchase = AC.qty * s.unitPrice;
+  const annualKwh = s.kw * AC.qty * AC.hoursPerDay * AC.daysPerYear;
+  const annualElectricity = annualKwh * AC.tariff;
+  const electricity = annualElectricity * YEARS;
+  const cycles = replacementCycles(YEARS, s.lifespan);
+  const replacement = cycles * purchase;
+  const maintenance = s.maintenance * YEARS;
+  const total = purchase + s.delivery + replacement + maintenance + electricity;
+  return { purchase, annualKwh, annualElectricity, electricity, cycles, replacement, maintenance, total };
+}
