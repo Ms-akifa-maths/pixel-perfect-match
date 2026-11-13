@@ -20,3 +20,14 @@ describe("LED 5-year ownership cost", () => {
   it("EfficientLite totals Rs 929,320", () => expect(ledCosts(ledSuppliers[1]!).total).toBeCloseTo(929320));
   it("EcoGlow totals Rs 713,880", () => expect(ledCosts(ledSuppliers[2]!).total).toBeCloseTo(713880));
 });
+
+import { acSuppliers, acCosts } from "./truebid";
+describe("AC 5-year ownership cost", () => {
+  it("CoolBasic needs one replacement and totals Rs 16,580,000", () => {
+    const c = acCosts(acSuppliers[0]!);
+    expect(c.cycles).toBe(1);
+    expect(c.total).toBeCloseTo(16580000);
+  });
+  it("InverterPro totals Rs 11,160,000", () => expect(acCosts(acSuppliers[1]!).total).toBeCloseTo(11160000));
+  it("EcoChill totals Rs 9,375,000", () => expect(acCosts(acSuppliers[2]!).total).toBeCloseTo(9375000));
+});
